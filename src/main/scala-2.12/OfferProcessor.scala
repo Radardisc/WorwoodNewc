@@ -2,21 +2,35 @@
   * Created by ror on 03/02/17.
   */
 class OfferProcessor {
-  def appleListPrice(list: List[Item]): Int = {
-    val length = list.length
-    val totalItems = length % 2 match {
-      case 0 => length / 2
-      case 1 => (length / 2) + 1
+  def twoForOne(list: List[Item]): Int = {
+    val result = list match {
+      case _ :: _ =>
+        val length = list.length
+        val totalItems = length % 2 match {
+          case 0 => length / 2
+          case 1 => (length / 2) + 1
+        }
+
+         totalItems * (list.head.price())
+
+      case _ => 0
     }
 
-    return totalItems * (new Apple().price())
+    return result
   }
 
-  def orangeListPrice(list: List[Item]): Int = {
-    val length = list.length
-    val totalOffers = length / 3
-    val extra = length % 3
-    val price = new Orange().price()
-    return totalOffers * 2 * price + extra * price
+  def threeForTwo(list: List[Item]): Int = {
+    val result = list match {
+      case _ :: _ =>
+        val length = list.length
+        val totalOffers = length / 3
+        val extra = length % 3
+        val price = list.head.price()
+        return totalOffers * 2 * price + extra * price
+      case _ => 0
+    }
+
+    return result
+
   }
 }

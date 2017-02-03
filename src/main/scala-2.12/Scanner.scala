@@ -9,8 +9,8 @@ class Scanner {
   def scan( offerProcessor: OfferProcessor, items: List[Item]) : Int = {
     val (appleList, orangesList) = items.partition{ _.isInstanceOf[Apple] }
 
-    val appleTotal = offerProcessor.appleListPrice(appleList)
-    val orangeTotal = offerProcessor.orangeListPrice(orangesList)
+    val appleTotal = offerProcessor.twoForOne(appleList)
+    val orangeTotal = offerProcessor.threeForTwo(orangesList)
 
     return appleTotal + orangeTotal
   }
